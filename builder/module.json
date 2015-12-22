@@ -2,7 +2,7 @@
     "widgets": [
         {
             "id": "homeWidget",
-            "title": "productcomparisonBuilder",
+            "title": "Product Comparison Builder Module",
             "settings": {
                 "viewUrl": "index.html",
                 "example_setting": "some value"
