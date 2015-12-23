@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <!-- custom stylesheets -->
+    <link href="styles.css" rel="stylesheet"/>
+    <link href="https://builder.yaas.io/public/css/styles.css" rel="stylesheet" />
+    <script src="https://builder.yaas.io/public/js/vendor/jquery/dist/jquery.min.js"></script>
+    <script src="https://builder.yaas.io/public/js/vendor/angular/angular.js"></script>
+    <script src="https://builder.yaas.io/public/js/builder.js"></script>
+    <title>The Simple Two</title>
+</head>
+<script type="text/javascript">
+    var virtualChildrenDemoApp = angular.module('virtualChildrenDemoApp', ["builder"]);
+
+    virtualChildrenDemoApp.controller('virtualChildrenCtrl', function($scope){
+        $scope.showVirtualChildView = function(){
+            Builder.linkManager().currentLocation().path('/virtualChild').open();
+        };
+    });
+
+    virtualChildrenDemoApp.controller('dynamicNodeCtrl', function($scope){
+        $scope.dynamicValue = undefined;
+        $scope.showDynamicNodeView = function(){
+            Builder.linkManager().currentLocation().path($scope.dynamicValue).open();
+        }
+    });
+</script>
+<body class="">
+<div class="background-epam container-fluid">
+
+        <!-- ngIf: tabSwitcherOn --><!-- end ngIf: tabSwitcherOn -->
+        <section class="section">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h2 translate="LOCALIZATION.LANGUAGES_HEADER" class="ng-scope">Maximum count of products</h2>
+                        </div>
+                        <div class="panel-body clearfix">
+                            <div class="row">
+                                <!-- ngIf: isOwner --><!-- end ngIf: isOwner -->
+                            </div>
+
+                            <div class="list-group ng-pristine ng-valid ui-sortable ui-sortable-disabled" ng-model="selectedLanguages" ui-sortable="languagesSortableOptions">
+                                <div class="form-group">
+                                    <label translate="LOCALIZATION.DEFAULT_LANGUAGE" class="ng-scope">Maximum allowed of compared products on "Products in comparison" page</label>
+                                    <div class="select2-container form-control input-lg ng-pristine ng-valid" id="s2id_autogen1"><a href="javascript:void(0)" class="select2-choice" tabindex="-1">   <span class="select2-chosen" id="select2-chosen-2">
+                                        10
+                                    </span><abbr class="select2-search-choice-close"></abbr>   <span class="select2-arrow" role="presentation"><b role="presentation"></b></span></a><label for="s2id_autogen2" class="select2-offscreen"></label><input class="select2-focusser select2-offscreen" type="text" aria-haspopup="true" role="button" aria-labelledby="select2-chosen-2" id="s2id_autogen2"><div class="select2-drop select2-display-none select2-with-searchbox">   <div class="select2-search">       <label for="s2id_autogen2_search" class="select2-offscreen"></label>       <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="select2-input" role="combobox" aria-expanded="true" aria-autocomplete="list" aria-owns="select2-results-2" id="s2id_autogen2_search" placeholder="">   </div>   <ul class="select2-results" role="listbox" id="select2-results-2">   </ul></div></div><select ui-select2="" ng-model="selectedDefaultLanguage" ng-change="setDefaultLanguage(selectedDefaultLanguage)" ng-disabled="!isOwner" class="form-control input-lg ng-pristine ng-valid select2-offscreen" tabindex="-1" title="">
+                                    <option value=""></option>
+                                    <!-- ngRepeat: language in predefinedLocales.languageList --><option ng-repeat="language in predefinedLocales.languageList" value="en" class="ng-binding ng-scope">
+                                    English
+                                </option><!-- end ngRepeat: language in predefinedLocales.languageList --><option ng-repeat="language in predefinedLocales.languageList" value="zh" class="ng-binding ng-scope">
+                                    Chinese
+                                </option><!-- end ngRepeat: language in predefinedLocales.languageList --><option ng-repeat="language in predefinedLocales.languageList" value="ru" class="ng-binding ng-scope">
+                                    Russian
+                                </option><!-- end ngRepeat: language in predefinedLocales.languageList --><option ng-repeat="language in predefinedLocales.languageList" value="fr" class="ng-binding ng-scope">
+                                    French
+                                </option><!-- end ngRepeat: language in predefinedLocales.languageList --><option ng-repeat="language in predefinedLocales.languageList" value="de" class="ng-binding ng-scope">
+                                    German
+                                </option><!-- end ngRepeat: language in predefinedLocales.languageList --><option ng-repeat="language in predefinedLocales.languageList" value="ko" class="ng-binding ng-scope">
+                                    Korean
+                                </option><!-- end ngRepeat: language in predefinedLocales.languageList --><option ng-repeat="language in predefinedLocales.languageList" value="ja" class="ng-binding ng-scope">
+                                    Japanese
+                                </option><!-- end ngRepeat: language in predefinedLocales.languageList --><option ng-repeat="language in predefinedLocales.languageList" value="es" class="ng-binding ng-scope">
+                                    Spanish
+                                </option><!-- end ngRepeat: language in predefinedLocales.languageList --><option ng-repeat="language in predefinedLocales.languageList" value="pt" class="ng-binding ng-scope">
+                                    Portuguese
+                                </option><!-- end ngRepeat: language in predefinedLocales.languageList --><option ng-repeat="language in predefinedLocales.languageList" value="it" class="ng-binding ng-scope">
+                                    Italian
+                                </option><!-- end ngRepeat: language in predefinedLocales.languageList -->
+                                </select>
+                                </div>
+
+                                <!-- ngRepeat: language in selectedLanguages --><!-- ngIf: !language.default --><!-- end ngRepeat: language in selectedLanguages -->
+
+
+                            </div>
+
+                            <!-- ngIf: isOwner -->
+                            <!-- ngIf: !isOwner -->
+                        </div>
+
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h2 translate="LOCALIZATION.LANGUAGES_HEADER" class="ng-scope">Sort compared categories by</h2>
+                        </div>
+                        <div class="panel-body clearfix">
+                            <div class="row">
+                                <!-- ngIf: isOwner --><!-- end ngIf: isOwner -->
+                            </div>
+
+                            <div class="list-group ng-pristine ng-valid ui-sortable ui-sortable-disabled" ng-model="selectedLanguages" ui-sortable="languagesSortableOptions">
+                                <div class="form-group">
+                                    <label translate="LOCALIZATION.DEFAULT_LANGUAGE" class="ng-scope">Select sorting strategy</label>
+                                    <div class="select2-container form-control input-lg ng-pristine ng-valid" id="s3id_autogen1"><a href="javascript:void(0)" class="select2-choice" tabindex="-1">   <span class="select2-chosen" id="select2-chosen-2">Common attributes to top</span><abbr class="select2-search-choice-close"></abbr>   <span class="select2-arrow" role="presentation"><b role="presentation"></b></span></a><label for="s2id_autogen2" class="select2-offscreen"></label><input class="select2-focusser select2-offscreen" type="text" aria-haspopup="true" role="button" aria-labelledby="select2-chosen-2" id="s2id_autogen2"><div class="select2-drop select2-display-none select2-with-searchbox">   <div class="select2-search">       <label for="s2id_autogen2_search" class="select2-offscreen"></label>       <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="select2-input" role="combobox" aria-expanded="true" aria-autocomplete="list" aria-owns="select2-results-2" id="s2id_autogen2_search" placeholder="">   </div>   <ul class="select2-results" role="listbox" id="select2-results-2">   </ul></div></div><select ui-select2="" ng-model="selectedDefaultLanguage" ng-change="setDefaultLanguage(selectedDefaultLanguage)" ng-disabled="!isOwner" class="form-control input-lg ng-pristine ng-valid select2-offscreen" tabindex="-1" title="">
+                                    <option value=""></option>
+                                    <!-- ngRepeat: language in predefinedLocales.languageList --><option ng-repeat="language in predefinedLocales.languageList" value="en" class="ng-binding ng-scope">
+                                    English
+                                </option><!-- end ngRepeat: language in predefinedLocales.languageList --><option ng-repeat="language in predefinedLocales.languageList" value="zh" class="ng-binding ng-scope">
+                                    Chinese
+                                </option><!-- end ngRepeat: language in predefinedLocales.languageList --><option ng-repeat="language in predefinedLocales.languageList" value="ru" class="ng-binding ng-scope">
+                                    Russian
+                                </option><!-- end ngRepeat: language in predefinedLocales.languageList --><option ng-repeat="language in predefinedLocales.languageList" value="fr" class="ng-binding ng-scope">
+                                    French
+                                </option><!-- end ngRepeat: language in predefinedLocales.languageList --><option ng-repeat="language in predefinedLocales.languageList" value="de" class="ng-binding ng-scope">
+                                    German
+                                </option><!-- end ngRepeat: language in predefinedLocales.languageList --><option ng-repeat="language in predefinedLocales.languageList" value="ko" class="ng-binding ng-scope">
+                                    Korean
+                                </option><!-- end ngRepeat: language in predefinedLocales.languageList --><option ng-repeat="language in predefinedLocales.languageList" value="ja" class="ng-binding ng-scope">
+                                    Japanese
+                                </option><!-- end ngRepeat: language in predefinedLocales.languageList --><option ng-repeat="language in predefinedLocales.languageList" value="es" class="ng-binding ng-scope">
+                                    Spanish
+                                </option><!-- end ngRepeat: language in predefinedLocales.languageList --><option ng-repeat="language in predefinedLocales.languageList" value="pt" class="ng-binding ng-scope">
+                                    Portuguese
+                                </option><!-- end ngRepeat: language in predefinedLocales.languageList --><option ng-repeat="language in predefinedLocales.languageList" value="it" class="ng-binding ng-scope">
+                                    Italian
+                                </option><!-- end ngRepeat: language in predefinedLocales.languageList -->
+                                </select>
+                                </div>
+
+                                <!-- ngRepeat: language in selectedLanguages --><!-- ngIf: !language.default --><!-- end ngRepeat: language in selectedLanguages -->
+
+
+                            </div>
+
+                            <!-- ngIf: isOwner -->
+                            <!-- ngIf: !isOwner -->
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+
+                    <!-- ngIf: selectedTab === 'members' --><div class="row ng-scope" ng-if="tabSwitcherOn">
+                    <ul class="nav nav-tabs nav-tabs-center">
+                        <li role="presentation" ng-class="{'active': selectedTab == 'members'}" class="active"><a href="#" ng-click="switchMode('members')" translate="MEMBERS.MEMBER_ACTIVE" class="ng-scope">Disabled Attributes</a></li>
+                        <li role="presentation" ng-class="{'active': selectedTab == 'invitations'}"><a href="#" ng-click="switchMode('invitations')" translate="MEMBERS.MEMBER_PENDING" class="ng-scope">disabled categories</a></li>
+                    </ul>
+                </div><div ng-if="selectedTab === 'members'" class="ng-scope">
+                    <pageable-table header-template-url="/public/templates/table-templates/member/member-header.html" row-template-url="/public/templates/table-templates/member/member-row.html" resource-path="projects/prodcomparison/members" on-entry-click="openMemberDetailsPage" mobile-slot-left="true" mobile-slot-right="true" class="ng-scope"><table class="table table-striped techne-table" ng-class="{'techne-table' : responsive}">
+                        <!-- ngInclude: headerTemplateUrl --><thead ng-include="headerTemplateUrl" class="ng-scope"><tr class="ng-scope">
+                        <!-- ngIf: selectionEnabled -->
+
+
+
+                        <th translate="ACCOUNT.LAST_NAME" class="ng-scope">attribute Name</th>
+
+                        <th></th>
+                    </tr></thead>
+                        <tbody>
+                        <tr class="y-add">
+                            <td colspan="100" class="no-padding" ng-transclude="">
+
+                                <button class="ptbl-transcluded y-add-btn ng-binding ng-scope" type="button" ng-click="openInvitationsModal()">
+                                    <span class="hyicon hyicon-add"></span>Add attribute
+                                </button>
+                            </td>
+                        </tr>
+                        <!-- ngRepeat: entry in currentPage --><!-- ngInclude: rowTemplateUrl --><tr ng-repeat="entry in currentPage" ng-click="onEntryClick(entry, $event)" ng-class="{'techne-table-xs-left' : mobileSlotLeft, 'techne-table-xs-right' : mobileSlotRight}" ng-include="rowTemplateUrl" class="ng-scope techne-table-xs-left techne-table-xs-right"><!-- ngIf: selectionEnabled -->
+
+
+
+
+                            <td data-th="Attribute" class="ng-scope">
+                                <div class="cellcontent">
+                                    <!-- ngIf: entry.status=='INVITED' -->
+                                    <!-- ngIf: entry.status=='ACTIVE' --><span ng-if="entry.status=='ACTIVE'" class="label label-success ng-binding ng-scope">color</span><!-- end ngIf: entry.status=='ACTIVE' -->
+                                    <!-- ngIf: entry.status=='BLOCKED' -->
+                                    <!-- ngIf: entry.status=='INACTIVE' -->
+                                </div>
+                            </td>
+                            <td class="techne-table-xs-right-slot ng-scope">
+                                <!-- ngIf: !isCreator(entry.email) -->
+                                <div class="cellcontent table-action tr-md tr-lg  ng-scope" ng-if="!isCreator(entry.email)" if-actions-allowed="project_manage">
+                                    <button class="btn-danger btn" href="" data-toggle="modal" ng-click="unassignMember(entry.email, $event);$event.stopPropagation()">
+                                        <span class="hyicon hyicon-remove"></span>
+                                    </button>
+                                </div></td></tr><!-- end ngRepeat: entry in currentPage --><!-- ngInclude: rowTemplateUrl --><tr ng-repeat="entry in currentPage" ng-click="onEntryClick(entry, $event)" ng-class="{'techne-table-xs-left' : mobileSlotLeft, 'techne-table-xs-right' : mobileSlotRight}" ng-include="rowTemplateUrl" class="ng-scope techne-table-xs-left techne-table-xs-right"><!-- ngIf: selectionEnabled -->
+
+
+
+
+                            <td data-th="Attribute" class="ng-scope">
+                                <div class="cellcontent">
+                                    <!-- ngIf: entry.status=='INVITED' -->
+                                    <!-- ngIf: entry.status=='ACTIVE' --><span ng-if="entry.status=='ACTIVE'" class="label label-success ng-binding ng-scope">Width</span><!-- end ngIf: entry.status=='ACTIVE' -->
+                                    <!-- ngIf: entry.status=='BLOCKED' -->
+                                    <!-- ngIf: entry.status=='INACTIVE' -->
+                                </div>
+                            </td>
+                            <td class="techne-table-xs-right-slot ng-scope">
+                                <!-- ngIf: !isCreator(entry.email) --><div class="cellcontent table-action tr-md tr-lg  ng-scope" ng-if="!isCreator(entry.email)" if-actions-allowed="project_manage">
+                                <button class="btn-danger btn" href="" data-toggle="modal" ng-click="unassignMember(entry.email, $event);$event.stopPropagation()">
+                                    <span class="hyicon hyicon-remove"></span>
+                                </button>
+                            </div><!-- end ngIf: !isCreator(entry.email) -->
+                            </td></tr><!-- end ngRepeat: entry in currentPage --><!-- ngInclude: rowTemplateUrl --><tr ng-repeat="entry in currentPage" ng-click="onEntryClick(entry, $event)" ng-class="{'techne-table-xs-left' : mobileSlotLeft, 'techne-table-xs-right' : mobileSlotRight}" ng-include="rowTemplateUrl" class="ng-scope techne-table-xs-left techne-table-xs-right"><!-- ngIf: selectionEnabled -->
+
+
+
+
+                            <td data-th="Attribute" class="ng-scope">
+                                <div class="cellcontent">
+                                    <!-- ngIf: entry.status=='INVITED' -->
+                                    <!-- ngIf: entry.status=='ACTIVE' --><span ng-if="entry.status=='ACTIVE'" class="label label-success ng-binding ng-scope">description</span><!-- end ngIf: entry.status=='ACTIVE' -->
+                                    <!-- ngIf: entry.status=='BLOCKED' -->
+                                    <!-- ngIf: entry.status=='INACTIVE' -->
+                                </div>
+                            </td>
+                            <td class="techne-table-xs-right-slot ng-scope">
+                                <!-- ngIf: !isCreator(entry.email) --><div class="cellcontent table-action tr-md tr-lg  ng-scope" ng-if="!isCreator(entry.email)" if-actions-allowed="project_manage">
+                                <button class="btn-danger btn" href="" data-toggle="modal" ng-click="unassignMember(entry.email, $event);$event.stopPropagation()">
+                                    <span class="hyicon hyicon-remove"></span>
+                                </button>
+                            </div><!-- end ngIf: !isCreator(entry.email) -->
+                            </td></tr><!-- end ngRepeat: entry in currentPage --><!-- ngInclude: rowTemplateUrl --><tr ng-repeat="entry in currentPage" ng-click="onEntryClick(entry, $event)" ng-class="{'techne-table-xs-left' : mobileSlotLeft, 'techne-table-xs-right' : mobileSlotRight}" ng-include="rowTemplateUrl" class="ng-scope techne-table-xs-left techne-table-xs-right"><!-- ngIf: selectionEnabled -->
+
+
+
+
+                            <td data-th="Attribute" class="ng-scope">
+                                <div class="cellcontent">
+                                    <!-- ngIf: entry.status=='INVITED' -->
+                                    <!-- ngIf: entry.status=='ACTIVE' --><span ng-if="entry.status=='ACTIVE'" class="label label-success ng-binding ng-scope">memory size</span><!-- end ngIf: entry.status=='ACTIVE' -->
+                                    <!-- ngIf: entry.status=='BLOCKED' -->
+                                    <!-- ngIf: entry.status=='INACTIVE' -->
+                                </div>
+                            </td>
+                            <td class="techne-table-xs-right-slot ng-scope">
+                                <!-- ngIf: !isCreator(entry.email) --><div class="cellcontent table-action tr-md tr-lg  ng-scope" ng-if="!isCreator(entry.email)" if-actions-allowed="project_manage">
+                                <button class="btn-danger btn" href="" data-toggle="modal" ng-click="unassignMember(entry.email, $event);$event.stopPropagation()">
+                                    <span class="hyicon hyicon-remove"></span>
+                                </button>
+                            </div><!-- end ngIf: !isCreator(entry.email) -->
+                            </td></tr><!-- end ngRepeat: entry in currentPage --><!-- ngInclude: rowTemplateUrl --><tr ng-repeat="entry in currentPage" ng-click="onEntryClick(entry, $event)" ng-class="{'techne-table-xs-left' : mobileSlotLeft, 'techne-table-xs-right' : mobileSlotRight}" ng-include="rowTemplateUrl" class="ng-scope techne-table-xs-left techne-table-xs-right"><!-- ngIf: selectionEnabled -->
+
+
+
+
+                            <td data-th="Attribute" class="ng-scope">
+                                <div class="cellcontent">
+                                    <!-- ngIf: entry.status=='INVITED' -->
+                                    <!-- ngIf: entry.status=='ACTIVE' --><span ng-if="entry.status=='ACTIVE'" class="label label-success ng-binding ng-scope">weight</span><!-- end ngIf: entry.status=='ACTIVE' -->
+                                    <!-- ngIf: entry.status=='BLOCKED' -->
+                                    <!-- ngIf: entry.status=='INACTIVE' -->
+                                </div>
+                            </td>
+                            <td class="techne-table-xs-right-slot ng-scope">
+                                <!-- ngIf: !isCreator(entry.email) --><div class="cellcontent table-action tr-md tr-lg  ng-scope" ng-if="!isCreator(entry.email)" if-actions-allowed="project_manage">
+                                <button class="btn-danger btn" href="" data-toggle="modal" ng-click="unassignMember(entry.email, $event);$event.stopPropagation()">
+                                    <span class="hyicon hyicon-remove"></span>
+                                </button>
+                            </div><!-- end ngIf: !isCreator(entry.email) -->
+                            </td></tr><!-- end ngRepeat: entry in currentPage -->
+                        </tbody>
+                    </table>
+
+                        <nav class="text-center">
+                            <!-- ngIf: hasPrevious || hasNext -->
+                        </nav>
+                    </pageable-table>
+
+                </div><!-- end ngIf: selectedTab === 'members' -->
+
+                    <!-- ngIf: selectedTab === 'invitations' -->
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

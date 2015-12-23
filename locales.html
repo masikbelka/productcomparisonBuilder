@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <!-- custom stylesheets -->
+    <link href="styles.css" rel="stylesheet"/>
+    <link href="https://builder.yaas.io/public/css/styles.css" rel="stylesheet" />
+    <script src="https://builder.yaas.io/public/js/vendor/jquery/dist/jquery.min.js"></script>
+    <script src="https://builder.yaas.io/public/js/vendor/angular/angular.js"></script>
+    <script src="https://builder.yaas.io/public/js/builder.js"></script>
+    <title>The Simple Two</title>
+</head>
+<script type="text/javascript">
+    var virtualChildrenDemoApp = angular.module('virtualChildrenDemoApp', ["builder"]);
+
+    virtualChildrenDemoApp.controller('virtualChildrenCtrl', function($scope){
+        $scope.showVirtualChildView = function(){
+            Builder.linkManager().currentLocation().path('/virtualChild').open();
+        };
+    });
+
+    virtualChildrenDemoApp.controller('dynamicNodeCtrl', function($scope){
+        $scope.dynamicValue = undefined;
+        $scope.showDynamicNodeView = function(){
+            Builder.linkManager().currentLocation().path($scope.dynamicValue).open();
+        }
+    });
+</script>
+<body>
+<div class="container-fluid background-epam">
+    <div class="page-header">
+        <!-- ngIf: !isOwner -->
+    </div>
+
+    <div class="row">
+
+        <div class="col-lg-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2 translate="LOCALIZATION.LANGUAGES_HEADER" class="ng-scope">Localization</h2>
+                </div>
+                <div class="panel-body clearfix">
+                    <div class="form-group ng-scope" ng-class="{'baas-editor-expanded' : isExpanded()}">
+                        <div class="locals-header clearfix">
+                            <div class="pull-right ng-hide" ng-show="globeVisible">
+                                <div class="validation-status" baas-validate="">
+                                    <span class="glyphicon glyphicon-globe"></span>
+                                </div>
+                                <a href="" class="btn-link btn" ng-click="toggle()">
+                    <span class="glyphicon  glyphicon-chevron-right" ng-class="{'glyphicon-chevron-down' : isExpanded(), 'glyphicon-chevron-right': !isExpanded()}">
+                    </span>
+                                </a>
+                            </div>
+                            <label class="control-label ng-binding">Add to comparison functioality</label>
+                        </div>
+
+                        <div class="scrollable-tabs-container">
+                            <a class="scroller scroller-left"><i class="glyphicon glyphicon-chevron-left"></i></a>
+                            <a class="scroller scroller-right"><i class="glyphicon glyphicon-chevron-right"></i></a>
+
+                            <div class="scrollable-tabs">
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <!-- ngRepeat: iso in keys --><li class="property ng-scope ng-pristine ng-valid active" ng-class="{active: $index == 0}" ng-repeat="iso in keys" baas-field-validate="" ng-model="iso">
+                                    <a role="tab" data-toggle="tab" ng-click="setTab($index, $event)" class="ng-binding">en</a>
+                                </li><!-- end ngRepeat: iso in keys -->
+                                    <li class="property ng-scope ng-pristine ng-valid" ng-class="{active: $index == 0}" ng-repeat="iso in keys" baas-field-validate="" ng-model="iso">
+                                        <a role="tab" data-toggle="tab" ng-click="setTab($index, $event)" class="ng-binding">ru</a>
+                                    </li></ul>
+                            </div>
+                        </div>
+                        <div class="tab-content">
+                            <!-- ngRepeat: iso in keys --><div class="tab-pane fade ng-scope ng-pristine ng-valid active in ng-valid-baas-required" ng-class="{active: $index == 0, in: $index == 0}" ng-repeat="iso in keys" baas-required="" baas-field-validate="" ng-model="iso" ng-form="innerForm" baas-form-name="">
+                            <div class="y-locale-label clearfix">
+                                <div class="nav-pill ng-binding">en</div>
+                            </div>
+                            <textarea type="text" class="form-control input-lg ng-pristine ng-valid" ng-model="data[iso]" rows=""></textarea>
+                        </div><!-- end ngRepeat: iso in keys -->
+                        </div>
+                    </div>
+
+
+
+                    <!-- ngIf: isOwner --><!-- end ngIf: isOwner -->
+                    <!-- ngIf: !isOwner -->
+                    <div class="form-group ng-scope" ng-class="{'baas-editor-expanded' : isExpanded()}">
+                        <div class="locals-header clearfix">
+                            <div class="pull-right ng-hide" ng-show="globeVisible">
+                                <div class="validation-status" baas-validate="">
+                                    <span class="glyphicon glyphicon-globe"></span>
+                                </div>
+                                <a href="" class="btn-link btn" ng-click="toggle()">
+                    <span class="glyphicon  glyphicon-chevron-right" ng-class="{'glyphicon-chevron-down' : isExpanded(), 'glyphicon-chevron-right': !isExpanded()}">
+                    </span>
+                                </a>
+                            </div>
+                            <label class="control-label ng-binding">Remove from comparison functioality</label>
+                        </div>
+
+                        <div class="scrollable-tabs-container">
+                            <a class="scroller scroller-left"><i class="glyphicon glyphicon-chevron-left"></i></a>
+                            <a class="scroller scroller-right"><i class="glyphicon glyphicon-chevron-right"></i></a>
+
+                            <div class="scrollable-tabs">
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <!-- ngRepeat: iso in keys --><li class="property ng-scope ng-pristine ng-valid active" ng-class="{active: $index == 0}" ng-repeat="iso in keys" baas-field-validate="" ng-model="iso">
+                                    <a role="tab" data-toggle="tab" ng-click="setTab($index, $event)" class="ng-binding">en</a>
+                                </li><!-- end ngRepeat: iso in keys -->
+                                    <li class="property ng-scope ng-pristine ng-valid" ng-class="{active: $index == 0}" ng-repeat="iso in keys" baas-field-validate="" ng-model="iso">
+                                        <a role="tab" data-toggle="tab" ng-click="setTab($index, $event)" class="ng-binding">ru</a>
+                                    </li></ul>
+                            </div>
+                        </div>
+                        <div class="tab-content">
+                            <!-- ngRepeat: iso in keys --><div class="tab-pane fade ng-scope ng-pristine ng-valid active in ng-valid-baas-required" ng-class="{active: $index == 0, in: $index == 0}" ng-repeat="iso in keys" baas-required="" baas-field-validate="" ng-model="iso" ng-form="innerForm" baas-form-name="">
+                            <div class="y-locale-label clearfix">
+                                <div class="nav-pill ng-binding">en</div>
+                            </div>
+                            <textarea type="text" class="form-control input-lg ng-pristine ng-valid" ng-model="data[iso]" rows=""></textarea>
+                        </div><!-- end ngRepeat: iso in keys -->
+                        </div>
+                    </div><div class="form-group ng-scope" ng-class="{'baas-editor-expanded' : isExpanded()}">
+                    <div class="locals-header clearfix">
+                        <div class="pull-right ng-hide" ng-show="globeVisible">
+                            <div class="validation-status" baas-validate="">
+                                <span class="glyphicon glyphicon-globe"></span>
+                            </div>
+                            <a href="" class="btn-link btn" ng-click="toggle()">
+                    <span class="glyphicon  glyphicon-chevron-right" ng-class="{'glyphicon-chevron-down' : isExpanded(), 'glyphicon-chevron-right': !isExpanded()}">
+                    </span>
+                            </a>
+                        </div>
+                        <label class="control-label ng-binding">"Products in comparison" page</label>
+                    </div>
+
+                    <div class="scrollable-tabs-container">
+                        <a class="scroller scroller-left"><i class="glyphicon glyphicon-chevron-left"></i></a>
+                        <a class="scroller scroller-right"><i class="glyphicon glyphicon-chevron-right"></i></a>
+
+                        <div class="scrollable-tabs">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <!-- ngRepeat: iso in keys --><li class="property ng-scope ng-pristine ng-valid " ng-class="{active: $index == 0}" ng-repeat="iso in keys" baas-field-validate="" ng-model="iso">
+                                <a role="tab" data-toggle="tab" ng-click="setTab($index, $event)" class="ng-binding">en</a>
+                            </li><!-- end ngRepeat: iso in keys -->
+                                <li class="property ng-scope ng-pristine ng-valid active" ng-class="{active: $index == 0}" ng-repeat="iso in keys" baas-field-validate="" ng-model="iso">
+                                    <a role="tab" data-toggle="tab" ng-click="setTab($index, $event)" class="ng-binding">ru</a>
+                                </li></ul>
+                        </div>
+                    </div>
+                    <div class="tab-content">
+                        <!-- ngRepeat: iso in keys --><div class="tab-pane fade ng-scope ng-pristine ng-valid active in ng-valid-baas-required" ng-class="{active: $index == 0, in: $index == 0}" ng-repeat="iso in keys" baas-required="" baas-field-validate="" ng-model="iso" ng-form="innerForm" baas-form-name="">
+                        <div class="y-locale-label clearfix">
+                            <div class="nav-pill ng-binding">en</div>
+                        </div>
+                        <textarea type="text" class="form-control input-lg ng-pristine ng-valid" ng-model="data[iso]" rows=""></textarea>
+                    </div><!-- end ngRepeat: iso in keys -->
+                    </div>
+                </div></div>
+
+            </div>
+        </div>
+        <!-- CURRENCY -->
+        <div class="col-lg-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2 translate="LOCALIZATION.LANGUAGES_HEADER" class="ng-scope">Locales</h2>
+                </div>
+                <div class="panel-body clearfix">
+                    <div class="row">
+                        <!-- ngIf: isOwner --><div class="col-sm-12 ng-scope" ng-if="isOwner">
+                        <button ng-click="toggleLanguagesReorder()" class="btn pull-right ng-binding btn-default" ng-class="{'btn-warning': !languagesSortableOptions.disabled, 'btn-default': languagesSortableOptions.disabled}">
+                            Reorder List
+                        </button>
+
+                        <button ng-click="cancelLanguagesReorder()" ng-show="!languagesSortableOptions.disabled" class="btn btn-link pull-left ng-scope ng-hide" translate="COMMON.CANCEL">Cancel</button></div><!-- end ngIf: isOwner -->
+                    </div>
+
+                    <div class="list-group ng-pristine ng-valid ui-sortable ui-sortable-disabled" ng-model="selectedLanguages" ui-sortable="languagesSortableOptions">
+                        <div class="form-group">
+                            <label translate="LOCALIZATION.DEFAULT_LANGUAGE" class="ng-scope">Default Locale</label>
+                            <div class="select2-container form-control input-lg ng-pristine ng-valid" id="s2id_autogen1"><a href="javascript:void(0)" class="select2-choice" tabindex="-1">   <span class="select2-chosen" id="select2-chosen-2">
+                                        English
+                                    </span><abbr class="select2-search-choice-close"></abbr>   <span class="select2-arrow" role="presentation"><b role="presentation"></b></span></a><label for="s2id_autogen2" class="select2-offscreen"></label><input class="select2-focusser select2-offscreen" type="text" aria-haspopup="true" role="button" aria-labelledby="select2-chosen-2" id="s2id_autogen2"><div class="select2-drop select2-display-none select2-with-searchbox">   <div class="select2-search">       <label for="s2id_autogen2_search" class="select2-offscreen"></label>       <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="select2-input" role="combobox" aria-expanded="true" aria-autocomplete="list" aria-owns="select2-results-2" id="s2id_autogen2_search" placeholder="">   </div>   <ul class="select2-results" role="listbox" id="select2-results-2">   </ul></div></div><select ui-select2="" ng-model="selectedDefaultLanguage" ng-change="setDefaultLanguage(selectedDefaultLanguage)" ng-disabled="!isOwner" class="form-control input-lg ng-pristine ng-valid select2-offscreen" tabindex="-1" title="">
+                            <option value=""></option>
+                            <!-- ngRepeat: language in predefinedLocales.languageList --><option ng-repeat="language in predefinedLocales.languageList" value="en" class="ng-binding ng-scope">
+                            English
+                        </option><!-- end ngRepeat: language in predefinedLocales.languageList --><option ng-repeat="language in predefinedLocales.languageList" value="zh" class="ng-binding ng-scope">
+                            Chinese
+                        </option><!-- end ngRepeat: language in predefinedLocales.languageList --><option ng-repeat="language in predefinedLocales.languageList" value="ru" class="ng-binding ng-scope">
+                            Russian
+                        </option><!-- end ngRepeat: language in predefinedLocales.languageList --><option ng-repeat="language in predefinedLocales.languageList" value="fr" class="ng-binding ng-scope">
+                            French
+                        </option><!-- end ngRepeat: language in predefinedLocales.languageList --><option ng-repeat="language in predefinedLocales.languageList" value="de" class="ng-binding ng-scope">
+                            German
+                        </option><!-- end ngRepeat: language in predefinedLocales.languageList --><option ng-repeat="language in predefinedLocales.languageList" value="ko" class="ng-binding ng-scope">
+                            Korean
+                        </option><!-- end ngRepeat: language in predefinedLocales.languageList --><option ng-repeat="language in predefinedLocales.languageList" value="ja" class="ng-binding ng-scope">
+                            Japanese
+                        </option><!-- end ngRepeat: language in predefinedLocales.languageList --><option ng-repeat="language in predefinedLocales.languageList" value="es" class="ng-binding ng-scope">
+                            Spanish
+                        </option><!-- end ngRepeat: language in predefinedLocales.languageList --><option ng-repeat="language in predefinedLocales.languageList" value="pt" class="ng-binding ng-scope">
+                            Portuguese
+                        </option><!-- end ngRepeat: language in predefinedLocales.languageList --><option ng-repeat="language in predefinedLocales.languageList" value="it" class="ng-binding ng-scope">
+                            Italian
+                        </option><!-- end ngRepeat: language in predefinedLocales.languageList -->
+                        </select>
+                        </div>
+
+                        <!-- ngRepeat: language in selectedLanguages --><!-- ngIf: !language.default --><!-- end ngRepeat: language in selectedLanguages -->
+
+                        <div class="form-group ">
+                            <div class="select2-container form-control input-lg ng-valid ng-pristine" id="s2id_autogen3"><a href="javascript:void(0)" class="select2-choice select2-default" tabindex="-1">   <span class="select2-chosen" id="select2-chosen-4">Add more locales</span><abbr class="select2-search-choice-close"></abbr>   <span class="select2-arrow" role="presentation"><b role="presentation"></b></span></a><label for="s2id_autogen4" class="select2-offscreen"></label><input class="select2-focusser select2-offscreen" type="text" aria-haspopup="true" role="button" aria-labelledby="select2-chosen-4" id="s2id_autogen4"><div class="select2-drop select2-display-none select2-with-searchbox">   <div class="select2-search">       <label for="s2id_autogen4_search" class="select2-offscreen"></label>       <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="select2-input" role="combobox" aria-expanded="true" aria-autocomplete="list" aria-owns="select2-results-4" id="s2id_autogen4_search" placeholder="">   </div>   <ul class="select2-results" role="listbox" id="select2-results-4">   </ul></div></div><select ui-select2="select2LanguageOptions" muiltiple="" ng-model="selectedLanguage.id" ng-change="addNewLanguage(selectedLanguage.id)" data-placeholder="Add more locales" class="form-control input-lg ng-valid select2-offscreen ng-pristine" ng-disabled="!isOwner" tabindex="-1" title="">
+                            <option value=""></option>
+                            <!-- ngRepeat: language in availableLanguages --><option ng-repeat="language in availableLanguages" value="zh" class="ng-binding ng-scope">
+                            Chinese
+                        </option><!-- end ngRepeat: language in availableLanguages --><option ng-repeat="language in availableLanguages" value="ru" class="ng-binding ng-scope">
+                            Russian
+                        </option><!-- end ngRepeat: language in availableLanguages --><option ng-repeat="language in availableLanguages" value="fr" class="ng-binding ng-scope">
+                            French
+                        </option><!-- end ngRepeat: language in availableLanguages --><option ng-repeat="language in availableLanguages" value="de" class="ng-binding ng-scope">
+                            German
+                        </option><!-- end ngRepeat: language in availableLanguages --><option ng-repeat="language in availableLanguages" value="ko" class="ng-binding ng-scope">
+                            Korean
+                        </option><!-- end ngRepeat: language in availableLanguages --><option ng-repeat="language in availableLanguages" value="ja" class="ng-binding ng-scope">
+                            Japanese
+                        </option><!-- end ngRepeat: language in availableLanguages --><option ng-repeat="language in availableLanguages" value="es" class="ng-binding ng-scope">
+                            Spanish
+                        </option><!-- end ngRepeat: language in availableLanguages --><option ng-repeat="language in availableLanguages" value="pt" class="ng-binding ng-scope">
+                            Portuguese
+                        </option><!-- end ngRepeat: language in availableLanguages --><option ng-repeat="language in availableLanguages" value="it" class="ng-binding ng-scope">
+                            Italian
+                        </option><!-- end ngRepeat: language in availableLanguages -->
+                        </select>
+                        </div>
+                    </div>
+
+                    <!-- ngIf: isOwner --><div class="checkbox ng-scope" style="margin-left: 20px;" ng-if="isOwner">
+                    <input type="checkbox" checked="true">
+                    <label class="select2-default ng-scope" translate="LOCALIZATION.CHECK_MARK_EXPLANATION_LANG_OWNER">Select the languages that are required for managing your commerce. Unchecked languages will display as optional.</label></div><!-- end ngIf: isOwner -->
+                    <!-- ngIf: !isOwner -->
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
