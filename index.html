@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <!-- custom stylesheets -->
     <link href="https://builder.yaas.io/public/css/styles.css" rel="stylesheet"/>
+    <link href="styles.css" rel="stylesheet"/>
     <script src="https://builder.yaas.io/public/js/vendor/jquery/dist/jquery.min.js"></script>
     <script src="https://builder.yaas.io/public/js/vendor/underscore/underscore.js"></script>
     <script src="https://builder.yaas.io/public/js/vendor/angular/angular.js"></script>
@@ -50,56 +51,47 @@
         };
     });
 </script>
-<div class="wrapper" ng-App="demoUIModuleApp">
+
+<div class="wrapper background-epam" ng-App="demoUIModuleApp">
     <div class="container-fluid" style="margin-left:10px;">
         <div class="row">
             <div class="page-header">
                 <h1 id="header"></h1>
             </div>
             <ul class="dataCards {$modifiers}">
-                <li class="y-add dataCard ">
-                    <button type="button" class="y-add-btn">
-                        <span class="hyicon hyicon-add"></span>
-                        New Button
-                    </button>
-                </li>
-                <li class="dataCard">
+                <li class="y-add dataCard " onclick="Builder.linkManager().path('/My Profile').open()">
                     <div class="cardRow cardRowClickable">
-                        <p class="primaryData">
-                            Primary Value
+                        <p class="primaryData uppercase">
+                            Product management
                         </p>
                         <p class="secondaryData">
-                            You can click me!
+                           Administration: count of product on page, disabling product categories etc.
                         </p>
-                        <p class="statusDataValue">
-         <span class="active">
-           Active
-         </span>
-                        </p>
+                    </div>
                 </li>
-                <li class="dataCard">
-                    <div class="cardRow">
-                        <p class="primaryData">
-                            Primary Value
+                <li class="dataCard" onclick="Builder.linkManager().path('/My Profile').open()">
+                    <div class="cardRow cardRowClickable">
+                        <p class="primaryData uppercase">
+                            Localization
                         </p>
                         <p class="secondaryData">
-                            You can't click me, I'm static!
+                            Change naming and localizing it
                         </p>
-                        <p class="statusDataValue">
-         <span class="active">
-           Active
-         </span>
+                    </div>
+                </li>
+                <li class="dataCard" onclick="Builder.linkManager().path('/My Profile').open()">
+                    <div class="cardRow cardRowClickable">
+                        <p class="primaryData uppercase">
+                            View
+                        </p>
+                        <p class="secondaryData">
+                            Widget image
                         </p>
                     </div>
                 </li>
             </ul>
-            <div class="dataCard-seeall">
-                <button class="btn btn-link">
-                    <span>See All</span>
-                    <span class="hyicon hyicon-chevron"></span>
-                </button>
-            </div>
-            <div id="token"></div>
+
+           <!-- <div id="token"></div>
             <div>
                 <h3>NOTIFICATIONS</h3>
             </div>
@@ -120,8 +112,8 @@
                 </button>
                 <button class="btn btn-warning" ng-click="processing()">I'm working!</button>
             </div>
-            <br>
-            <div>
+            <br>-->
+            <!--<div>
                 <h3>LINKMANAGER</h3>
             </div>
             <div ng-controller="linkManagerCtrl">
@@ -160,7 +152,46 @@
                 <div>API Management Url : {{widgetSettings.apiManagementUrl}}</div>
                 <div>Example Settings : {{widgetSettings.example_setting}}</div>
             </div>
+            <br>--><!--<div>
+                <h3>LINKMANAGER</h3>
+            </div>
+            <div ng-controller="linkManagerCtrl">
+                <div>
+                    <button class="btn btn-default" onclick="Builder.linkManager().path('/My Profile').open()">Show my
+                        Profile
+                    </button>
+                    <button class="btn btn-default"
+                            onclick="Builder.linkManager().path('/Home/Projects/'+Builder.currentProjectId+'/parent/issue2').open()">
+                        Show widget two
+                    </button>
+                    <button class="btn btn-default" id="isPathExisting"
+                            onclick="Builder.linkManager().path('/Product Overview')">Link does not exist
+                    </button>
+                </div>
+            </div>
             <br>
+            <div>
+                <h3>LOCALIZED EDITOR</h3>
+            </div>
+            <div ng-controller="localizedCtrl">
+                <div class="panel-body" style="width:50%;">
+                    <h4>Multi Line Editor</h4>
+                    <localized-text-editor ng-form="someForm" builder-editor-type="tab" data="localizedData"
+                                           label="localizedLabel"
+                                           novalidate="novalidate" builder-validate-required-languages="false"
+                                           builder-locale-type="languages"></localized-text-editor>
+                </div>
+            </div>
+            <br>
+            <div>
+                <h3>SETTINGS</h3>
+            </div>
+            <div ng-controller="settingsCtrl">
+                <div>EmailServiceUrl : {{widgetSettings.emailServiceUrl}}</div>
+                <div>API Management Url : {{widgetSettings.apiManagementUrl}}</div>
+                <div>Example Settings : {{widgetSettings.example_setting}}</div>
+            </div>
+            <br>-->
             <div>
                 <h3>AUTH MANAGER</h3>
             </div>
