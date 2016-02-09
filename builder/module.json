@@ -1,0 +1,15 @@
+{
+    "widgets": [        
+         {
+            "id": "prodComparisonConfiguration",
+            "title": "Product comparison configuration",
+            "settings": {
+                "viewUrl": "comparison-configuration.html",
+                "reviewServiceUrl": "https://api.yaas.io/epam/productcomparison/b1/"
+            },
+            "virtualChildren": true,
+            "widgets" : [
+            ]
+         }
+    ]
+}

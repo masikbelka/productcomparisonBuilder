@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- custom stylesheets -->
+    <link href="https://builder.yaas.io/public/css/styles.css" rel="stylesheet"/>
+    <script src="https://builder.yaas.io/public/js/vendor/jquery/dist/jquery.min.js"></script>
+    <script src="https://builder.yaas.io/public/js/vendor/angular/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.8/angular-filter.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
+    <script src="https://builder.yaas.io/public/js/vendor/underscore/underscore.js"></script>
+    <script src="https://builder.yaas.io/public/js/vendor/restangular/dist/restangular.js"></script>    
+    <script src="https://builder.yaas.io/public/js/builder.js"></script>
+    <script src="app/builder-app.js"></script>
+    <script src="app/comparison-configuration/controllers/comparison-configuration-controller.js"></script>
+    <title>Product comparison configuration</title>
+</head>
+
+<body  ng-app="epam.prodcomparison.builder" ng-controller="ComparisonConfigurationController">
+<div class="wrapper">
+    <div class="navbar navbar-default navbar-fixed-top y-navbar-centered y-navbar-lg">
+        <div class="container-fluid">
+            <div class="y-navbar-center">
+                <div class="y-navbar-center-content">
+                    <h1>Product comparison configuration</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper" ng-cloak>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Define max number or products in comparison</div>
+                        <div class="panel-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="maxNumber">max number or products in comparison</label>
+                                    <input type="number" class="form-control" id="maxNumber" min="1" placeholder="A positive number" required>
+                                </div>
+                                <button class="btn btn-lg btn-primary">
+                                    Update
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Choose default sorting strategy for storefront</div>
+                        <div class="panel-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="sortingStrategy">Default sorting strategy</label>
+                                    <select class="form-control" id="sortingStrategy">
+                                        <option>Common to the top</option>
+                                        <option>Common to the down</option>
+                                        <option>Alphabetical(A-Z)</option>
+                                        <option>Alphabetical(Z-A)</option>
+                                    </select>
+                                </div>
+                                <button class="btn btn-lg btn-primary">
+                                    Update
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
