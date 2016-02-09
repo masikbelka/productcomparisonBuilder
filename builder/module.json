@@ -1,5 +1,5 @@
 {
-    "widgets": [        
+    "widgets": [
          {
             "id": "prodComparisonConfiguration",
             "title": "Product comparison configuration",
@@ -11,5 +11,6 @@
             "widgets" : [
             ]
          }
+
     ]
 }
