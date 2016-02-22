@@ -15,9 +15,7 @@ angular.module('epam.prodcomparison.builder')
 	        .then(function(data) {
 	        	$scope.maxInComparison = data.config_value;
 	        });
-    	}
-    
-    
+        
     	$scope.updateMaxProduct = function() {
     		ProductComparisonRest.comparison
 	        .one('config', maxProductsNumberKey)
