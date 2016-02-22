@@ -7,27 +7,27 @@ angular.module('epam.prodcomparison.builder').controller(
 				'ProductComparisonRest',
 				function($scope, ProductComparisonRest) {
 
-					$scope.maxInComparison = 1;
-					$scope.defaultSortingStategy = "";
+					$scope.comparisonConfig = {
+					    "config_id" : "max_products_number",
+					    "config_value": "1"
+					}
 
-					var maxProductsNumberKey = "max_products_number";
 
 					ProductComparisonRest.comparison
-					.one('configs',maxProductsNumberKey)
-					.get().then(function(data) {
-						$scope.maxInComparison = data.config_value;
+					.one('configs', "max_products_number")
+					.get()
+					.then(function(configFromServer) {
+						$scope.comparisonConfig.config_value = configFromServer.config_value;
 					}, function(response) {
-						  console.log("Error with status code", response.status);
-						  $scope.maxInComparison = 1;
+						console.log("Error with status code", response.status);
+						$scope.comparisonConfig.config_value = 1;
 					});
 
 					$scope.updateMaxProduct = function() {
 						ProductComparisonRest.comparison
 						.all("configs/max_products_number")
-						.post({
-							"config_id" : maxProductsNumberKey,
-							"config_value" : '"' + $scope.maxInComparison + '"'
-						}).then(function(data) {
+						.post($scope.comparisonConfig)
+						.then(function(data) {
 							alert("config was succesfully updated");
 						});
 					}
