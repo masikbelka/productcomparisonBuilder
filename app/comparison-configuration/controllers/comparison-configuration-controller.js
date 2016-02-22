@@ -29,7 +29,6 @@ angular.module('epam.prodcomparison.builder')
 	        	alert("config was succesfully updated");
 	        });
     	}
-    	}
     
     ]);
 
