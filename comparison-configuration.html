@@ -33,11 +33,11 @@
             <div class="row">
                 <div class="col-xs-6">
                     <div class="panel panel-default">
-                        <div class="panel-heading">Define max number or products in comparison</div>
+                        <div class="panel-heading">Define max number of products in comparison</div>
                         <div class="panel-body">
                             <form>
                                 <div class="form-group">
-                                    <input type="number" class="form-control" id="maxNumber" ng-model="maxInComparison" min="1" placeholder="A positive number" required>
+                                    <input type="number" class="form-control" ng-model="comparisonConfig.config_value" required>
                                 </div>
                                 <button class="btn btn-lg btn-primary" ng-click="updateMaxProduct()">
                                     Update
@@ -52,8 +52,7 @@
                         <div class="panel-body">
                             <form>
                                 <div class="form-group">
-                                    <label for="sortingStrategy">Default sorting strategy</label>
-                                    <select class="form-control" id="sortingStrategy">
+                                    <select class="form-control" ng-model="sortingStrategy">
                                         <option>Common to the top</option>
                                         <option>Common to the down</option>
                                         <option>Alphabetical(A-Z)</option>

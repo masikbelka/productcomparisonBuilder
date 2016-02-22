@@ -2,7 +2,7 @@
     "widgets": [        
          {
             "id": "prodComparisonConfiguration",
-            "title": "Product comparison configuration",
+            "title": "Product comparison",
             "settings": {
 
                 "viewUrl": "comparison-configuration.html",
