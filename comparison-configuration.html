@@ -13,6 +13,7 @@
     <script src="https://builder.yaas.io/public/js/builder.js"></script>
     <script src="app/builder-app.js"></script>
     <script src="app/comparison-configuration/controllers/comparison-configuration-controller.js"></script>
+    <script src="app/comparison-configuration/services/productcomparison-rest.js"></script>
     <title>Product comparison configuration</title>
 </head>
 
@@ -36,10 +37,9 @@
                         <div class="panel-body">
                             <form>
                                 <div class="form-group">
-                                    <label for="maxNumber">max number or products in comparison</label>
-                                    <input type="number" class="form-control" id="maxNumber" min="1" placeholder="A positive number" required>
+                                    <input type="number" class="form-control" id="maxNumber" ng-model="maxInComparison" min="1" placeholder="A positive number" required>
                                 </div>
-                                <button class="btn btn-lg btn-primary">
+                                <button class="btn btn-lg btn-primary" ng-click="updateMaxProduct()">
                                     Update
                                 </button>
                             </form>
