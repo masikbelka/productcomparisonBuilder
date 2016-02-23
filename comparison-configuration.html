@@ -37,7 +37,7 @@
                         <div class="panel-body">
                             <form>
                                 <div class="form-group">
-                                    <input class="form-control" ng-model="comparisonConfig.config_value" required>
+                                    <input class="form-control" ng-model="maxInComparisonConfig.config_value" ng-required="true" ng-pattern="/^[1-9]+[0-9]*$/">
                                 </div>
                                 <button class="btn btn-lg btn-primary" ng-click="updateMaxProduct()">
                                     Update
@@ -52,14 +52,11 @@
                         <div class="panel-body">
                             <form>
                                 <div class="form-group">
-                                    <select class="form-control" ng-model="sortingStrategy">
-                                        <option>Common to the top</option>
-                                        <option>Common to the down</option>
-                                        <option>Alphabetical(A-Z)</option>
-                                        <option>Alphabetical(Z-A)</option>
+                                    <select name="sortingStrategy" ng-model="defaultSortingStrategy.config_value">
+                                        <option ng-repeat="option in sortingOptions" value="{{option.code}}">{{option.title}}</option>
                                     </select>
                                 </div>
-                                <button class="btn btn-lg btn-primary">
+                                <button class="btn btn-lg btn-primary" ng-click="updateDefaultSortingStrategy()">
                                     Update
                                 </button>
                             </form>
