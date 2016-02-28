@@ -4,18 +4,12 @@ angular.module('epam.prodcomparison.builder').controller(
     'ComparisonConfigurationController',
     [
         '$scope',
-        'ProductComparisonRest',
-        function ($scope, ProductComparisonRest) {
+        'ProductComparisonConfigSvc',
+        '$q',
+        function ($scope, configSvc,$q) {
 
-            $scope.maxInComparisonConfig = {
-                "config_id": "max_products_number",
-                "config_value": "1"
-            };
-
-            $scope.defaultSortingStrategy = {
-                "config_id": "default_sorting_strategy",
-                "config_value": "a-z"
-            };
+            $scope.saveButtonEnabled = false;
+            $scope.spinerEnabled = false;
 
             $scope.sortingOptions = [
                 {title: "Common to the top", code: "commonTop"},
@@ -24,42 +18,48 @@ angular.module('epam.prodcomparison.builder').controller(
                 {title: "Alphabetical(Z-A)", code: "z-a"}];
 
 
-            ProductComparisonRest.comparison
-                .one('configs', "max_products_number")
-                .get()
-                .then(function (configFromServer) {
-                    $scope.maxInComparisonConfig.config_value = configFromServer.config_value;
-                }, function (response) {
-                    console.log("Error with status code", response.status);
-                    $scope.maxInComparisonConfig.config_value = 1;
-                });
+            configSvc.getCurrentConfigValue("max_products_number").then(function (maxComparisonConfig) {
+                $scope.maxInComparison = maxComparisonConfig.config_value;
+                $scope.old_maxInComparison = maxComparisonConfig.config_value;
+            }, function () {
+                $scope.maxInComparison = "1";
+                $scope.old_maxInComparison = "1";
+            });
+            configSvc.getCurrentConfigValue("default_sorting").then(function (defaultSorting) {
+                $scope.defaultSorting = defaultSorting.config_value;
+                $scope.old_defaultSorting = defaultSorting.config_value;
+            }, function () {
+                $scope.defaultSorting = "a-z";
+                $scope.old_defaultSorting = "a-z";
+            });
 
-            ProductComparisonRest.comparison
-                .one('configs', "default_sorting_strategy")
-                .get()
-                .then(function (configFromServer) {
-                    $scope.defaultSortingStrategy.config_value = configFromServer.config_value;
-                }, function (response) {
-                    console.log("Error with status code", response.status);
-                    $scope.defaultSortingStrategy.config_value = "a-z";
-                });
-
-            $scope.updateMaxProduct = function () {
-                ProductComparisonRest.comparison
-                    .all("configs/max_products_number")
-                    .post($scope.maxInComparisonConfig)
-                    .then(function (data) {
-                        alert("Max in comparison config was successfully updated");
-                    });
+            $scope.change = function (configId) {
+                var newValue = $scope[configId];
+                var oldValue = $scope['old_' + configId];
+                if (oldValue !== newValue) {
+                    $scope.saveButtonEnabled = 'true';
                 }
+            }
 
-            $scope.updateDefaultSortingStrategy = function(){
-                ProductComparisonRest.comparison
-                    .all("configs/default_sorting_strategy")
-                    .post($scope.defaultSortingStrategy)
-                    .then(function (data) {
-                        alert("Default sorting strategy config was successfully updated");
-                    });
+            $scope.goBack = function(){
+                history.back();
+            }
+
+            $scope.cancel = function () {
+                $scope.maxInComparison = $scope.old_maxInComparison;
+                $scope.defaultSorting = $scope.old_defaultSorting;
+                $scope.saveButtonEnabled = false;
+            }
+
+            $scope.save = function () {
+                $scope.spinerEnabled = true;
+                var future1 = configSvc.postNewConfigValue('max_products_number', $scope.maxInComparison);
+                var future2 = configSvc.postNewConfigValue('default_sorting', $scope.defaultSorting);
+
+                $q.all([future1, future2]).then(function () {
+                    $scope.saveButtonEnabled = false;
+                    $scope.spinerEnabled = false;
+                });
             }
 
         }]);
