@@ -109,13 +109,16 @@
                 </div>
                 <div class="col-xs-6">
                     <div class="panel panel-default">
-                        <div class="panel-heading">Expiration time for anonymous users</div>
+                        <div class="panel-heading">
+                            Store comparison by user login
+                        </div>
                         <div class="panel-body">
                             <form>
                                 <div class="form-group">
-                                    <select class="form-control" name="expirationTime" ng-model="ttlAnonymous" ng-change="change('ttlAnonymous')">
-                                        <option ng-repeat="option in expirationTimeOptions" value="{{option.code}}" ng-selected="ttlAnonymous===option.code">{{option.title}}</option>
-                                    </select>
+                                   <span class="y-toggle y-toggle-lg">
+                                      <input type="checkbox" id="persistLogged" ng-model="persistLogged" ng-change="change('persistLogged')"/>
+                                      <label for="persistLogged" data-activelabel="On" data-inactivelabel="Off"></label>
+                                    </span>
                                 </div>
                             </form>
                         </div>
@@ -127,8 +130,22 @@
                         <div class="panel-body">
                             <form>
                                 <div class="form-group">
-                                    <select class="form-control" name="expirationTime" ng-model="ttlLogged" ng-change="change('ttlLogged')">
+                                    <select class="form-control" name="expirationTime" ng-disabled="!persistLogged" ng-model="ttlLogged" ng-change="change('ttlLogged')">
                                         <option ng-repeat="option in expirationTimeOptions" value="{{option.code}}" ng-selected="ttlLogged===option.code">{{option.title}}</option>
+                                    </select>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Expiration time for anonymous users</div>
+                        <div class="panel-body">
+                            <form>
+                                <div class="form-group">
+                                    <select class="form-control" name="expirationTime" ng-model="ttlAnonymous" ng-change="change('ttlAnonymous')">
+                                        <option ng-repeat="option in expirationTimeOptions" value="{{option.code}}" ng-selected="ttlAnonymous===option.code">{{option.title}}</option>
                                     </select>
                                 </div>
                             </form>

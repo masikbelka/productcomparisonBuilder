@@ -66,6 +66,13 @@ angular.module('epam.prodcomparison.builder').controller(
                 $scope.ttlLogged = "15";
                 $scope.old_ttlLogged = "15";
             });
+            configSvc.getCurrentConfigValue("persist_logged_users_comparisons").then(function (config) {
+                $scope.persistLogged = config.config_value;
+                $scope.old_persistLogged = config.config_value;
+            }, function () {
+                $scope.persistLogged = false;
+                $scope.old_persistLogged = false;
+            });
 
             $scope.change = function (configId) {
                 var newValue = $scope[configId];
@@ -85,7 +92,8 @@ angular.module('epam.prodcomparison.builder').controller(
                 $scope.hideEmpty = $scope.old_hideEmpty;
                 $scope.hideEqual = $scope.old_hideEqual;
                 $scope.ttlAnonymous = $scope.old_ttlAnonymous;
-                $scope.ttlLogged = $scope.ttlLogged;
+                $scope.ttlLogged = $scope.old_ttlLogged;
+                $scope.persistLogged = $scope.old_persistLogged;
                 $scope.saveButtonEnabled = false;
             }
 
@@ -97,8 +105,8 @@ angular.module('epam.prodcomparison.builder').controller(
                 var future4 = configSvc.postNewConfigValue('hide_equal_attributes', $scope.hideEqual);
                 var future5 = configSvc.postNewConfigValue('ttl_anonymous_comparisons', $scope.ttlAnonymous);
                 var future6 = configSvc.postNewConfigValue('ttl_logged_comparisons', $scope.ttlLogged);
-
-                $q.all([future1, future2, future3, future4, future5, future6]).then(function () {
+                var future7 = configSvc.postNewConfigValue('persist_logged_users_comparisons', $scope.persistLogged);
+                $q.all([future1, future2, future3, future4, future5, future6, future7]).then(function () {
                     $scope.saveButtonEnabled = false;
                     $scope.spinerEnabled = false;
                 });
