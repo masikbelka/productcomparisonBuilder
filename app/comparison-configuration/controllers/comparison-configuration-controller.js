@@ -10,10 +10,13 @@ angular.module('epam.prodcomparison.builder').controller(
 
             $scope.saveButtonEnabled = false;
             $scope.spinerEnabled = false;
+            $scope.groupByGeneral = true;
+            $scope.groupBySave = true;
+            $scope.groupByDisplay = true;
 
             $scope.sortingOptions = [
-                {title: "Common to the top", code: "commonTop"},
-                {title: "Common to the dow", code: "commonDown"},
+                {title: "Common to top", code: "commonTop"},
+                {title: "Common to bottom", code: "commonDown"},
                 {title: "Alphabetical(A-Z)", code: "a-z"},
                 {title: "Alphabetical(Z-A)", code: "z-a"}];
 
