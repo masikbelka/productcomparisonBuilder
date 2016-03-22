@@ -50,149 +50,92 @@
     </div>
     <div class="wrapper" ng-cloak>
         <div class="container-fluid">
-            <ul class="dataCards">
-                <li class="dataCard" ng-click="groupByGeneral!=groupByGeneral">
-                    <div class="cardRow cardRowClickable">
-                        <p class="primaryData">
-                            General
-                        </p>
-                        <p class="secondaryData">
-                            Define number of products in comparison
-                        </p>
-                        <span class="label label-success" ng-show="!groupByGeneral">
-                           Active
-                         </span>
-                    </div>
-                </li>
-                <li class="dataCard" ng-click="groupByDisplay=!groupByDisplay">
-                    <div class="cardRow cardRowClickable">
-                        <p class="primaryData">
-                            Comparison display settings
-                        </p>
-                        <p class="secondaryData">
-                            Define sorting strategy and hiding options
-                        </p>
-                        <span class="label label-success" ng-show="!groupByDisplay">
-                           Active
-                         </span>
-                    </div>
-                </li>
-                <li class="dataCard" ng-click="groupBySave=!groupBySave">
-                    <div class="cardRow cardRowClickable">
-                        <p class="primaryData">
-                            Storage options
-                        </p>
-                        <p class="secondaryData">
-                            Define live time of comparison page for different users
-                        </p>
-                        <span class="label label-success" ng-show="!groupBySave">
-                           Active
-                         </span>
-                    </div>
-                </li>
-            </ul>
             <div class="row">
-                <div class="col-xs-6" ng-show="!groupByGeneral">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Define max number of products in comparison</div>
-                        <div class="panel-body">
-                            <form>
-                                <div class="form-group">
-                                    <input class="form-control" ng-change="change('maxInComparison')" ng-model="maxInComparison" ng-required="true" ng-pattern="/^[1-9]+[0-9]*$/">
-                                </div>
-                            </form>
-                        </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">General</div>
+                    <div class="panel-body">
+                        <h3>Define max number of products in comparison</h3>
+                        <form>
+                            <div class="form-group">
+                                <input class="form-control" ng-change="change('maxInComparison')" ng-model="maxInComparison" ng-required="true" ng-pattern="/^[1-9]+[0-9]*$/">
+                            </div>
+                        </form>
                     </div>
                 </div>
-                <div class="col-xs-6" ng-show="!groupByDisplay">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Choose default sorting strategy for storefront</div>
-                        <div class="panel-body">
-                            <form>
-                                <div class="form-group">
-                                    <select class="form-control" name="sortingStrategy" ng-model="defaultSorting" ng-change="change('defaultSorting')">
-                                        <option ng-repeat="option in sortingOptions" value="{{option.code}}" ng-selected="defaultSorting===option.code">{{option.title}}</option>
-                                    </select>
-                                </div>
-                            </form>
-                        </div>
+            </div>
+            <div class="row">
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">Comparison display settings</div>
+                    <div class="panel-body">
+                        <h3>Choose default sorting strategy for storefront</h3>
+                        <form>
+                            <div class="form-group">
+                                <select class="form-control" name="sortingStrategy" ng-model="defaultSorting" ng-change="change('defaultSorting')">
+                                    <option ng-repeat="option in sortingOptions" value="{{option.code}}" ng-selected="defaultSorting===option.code">{{option.title}}</option>
+                                </select>
+                            </div>
+                        </form>
+
+                        <h3>Hide empty attributes by default</h3>
+                        <form>
+                            <div class="form-group">
+                                <span class="y-toggle y-toggle-lg">
+                                  <input type="checkbox" id="hideEmpty" ng-model="hideEmpty" ng-change="change('hideEmpty')"/>
+                                  <label for="hideEmpty" data-activelabel="On" data-inactivelabel="Off"></label>
+                                </span>
+                            </div>
+                        </form>
+
+                        <h3>Hide equal attributes by default</h3>
+                        <form>
+                            <div class="form-group">
+                               <span class="y-toggle y-toggle-lg">
+                                  <input type="checkbox" id="hideEqual" ng-model="hideEqual" ng-change="change('hideEqual')"/>
+                                  <label for="hideEqual" data-activelabel="On" data-inactivelabel="Off"></label>
+                                </span>
+                            </div>
+                        </form>
                     </div>
                 </div>
-                <div class="col-xs-6" ng-show="!groupByDisplay">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Hide empty attributes by default</div>
-                        <div class="panel-body">
-                            <form>
-                                <div class="form-group">
-                                    <span class="y-toggle y-toggle-lg">
-                                      <input type="checkbox" id="hideEmpty" ng-model="hideEmpty" ng-change="change('hideEmpty')"/>
-                                      <label for="hideEmpty" data-activelabel="On" data-inactivelabel="Off"></label>
-                                    </span>
-                                </div>
-                            </form>
-                        </div>
+
+            </div>
+            <div class="row">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Storage options
+                    </div>
+                    <div class="panel-body">
+                        <h3>Store comparison by user login</h3>
+                        <form>
+                            <div class="form-group">
+                               <span class="y-toggle y-toggle-lg">
+                                  <input type="checkbox" id="persistLogged" ng-model="persistLogged" ng-change="change('persistLogged')"/>
+                                  <label for="persistLogged" data-activelabel="On" data-inactivelabel="Off"></label>
+                                </span>
+                            </div>
+                        </form>
+
+                        <h3>Expiration time for logged users</h3>
+                        <form>
+                            <div class="form-group">
+                                <select class="form-control" name="expirationTime" ng-disabled="!persistLogged" ng-model="ttlLogged" ng-change="change('ttlLogged')">
+                                    <option ng-repeat="option in expirationTimeOptions" value="{{option.code}}" ng-selected="ttlLogged===option.code">{{option.title}}</option>
+                                </select>
+                            </div>
+                        </form>
+
+                        <h3>Expiration time for anonymous users</h3>
+                        <form>
+                            <div class="form-group">
+                                <select class="form-control" name="expirationTime" ng-model="ttlAnonymous" ng-change="change('ttlAnonymous')">
+                                    <option ng-repeat="option in expirationTimeOptions" value="{{option.code}}" ng-selected="ttlAnonymous===option.code">{{option.title}}</option>
+                                </select>
+                            </div>
+                        </form>
                     </div>
                 </div>
-                <div class="col-xs-6" ng-show="!groupByDisplay">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Hide equal attributes by default</div>
-                        <div class="panel-body">
-                            <form>
-                                <div class="form-group">
-                                   <span class="y-toggle y-toggle-lg">
-                                      <input type="checkbox" id="hideEqual" ng-model="hideEqual" ng-change="change('hideEqual')"/>
-                                      <label for="hideEqual" data-activelabel="On" data-inactivelabel="Off"></label>
-                                    </span>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-6" ng-show="!groupBySave">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            Store comparison by user login
-                        </div>
-                        <div class="panel-body">
-                            <form>
-                                <div class="form-group">
-                                   <span class="y-toggle y-toggle-lg">
-                                      <input type="checkbox" id="persistLogged" ng-model="persistLogged" ng-change="change('persistLogged')"/>
-                                      <label for="persistLogged" data-activelabel="On" data-inactivelabel="Off"></label>
-                                    </span>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-6" ng-show="!groupBySave">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Expiration time for logged users</div>
-                        <div class="panel-body">
-                            <form>
-                                <div class="form-group">
-                                    <select class="form-control" name="expirationTime" ng-disabled="!persistLogged" ng-model="ttlLogged" ng-change="change('ttlLogged')">
-                                        <option ng-repeat="option in expirationTimeOptions" value="{{option.code}}" ng-selected="ttlLogged===option.code">{{option.title}}</option>
-                                    </select>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-6" ng-show="!groupBySave">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Expiration time for anonymous users</div>
-                        <div class="panel-body">
-                            <form>
-                                <div class="form-group">
-                                    <select class="form-control" name="expirationTime" ng-model="ttlAnonymous" ng-change="change('ttlAnonymous')">
-                                        <option ng-repeat="option in expirationTimeOptions" value="{{option.code}}" ng-selected="ttlAnonymous===option.code">{{option.title}}</option>
-                                    </select>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+
             </div>
         </div>
     </div>
